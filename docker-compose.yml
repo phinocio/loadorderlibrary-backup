@@ -1,0 +1,28 @@
+---
+# Local Development docker-compose File.
+services:
+    app:
+        build:
+            context: .
+            args:
+                uid: 1000
+            dockerfile: docker/dev/app/Dockerfile
+            target: backup-dev
+        image: loadorderlibrary-backup:dev
+        container_name: lol-dev-backup
+        restart: no
+        volumes:
+            - ./:/srv/lol-backup
+            - ./storage/app/backups:/srv/lol-backup/storage/app/backups
+            - /home/alice/Projects/APIs/loadorderlibrary-api/storage/app/uploads:/srv/lol-backup/storage/app/uploads
+        networks:
+            - lol
+            - lol-db
+        external_links:
+            - lol-dev-db
+
+networks:
+    lol:
+        external: true
+    lol-db:
+        external: true

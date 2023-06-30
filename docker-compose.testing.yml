@@ -1,0 +1,21 @@
+---
+# Testing docker-compose File.
+services:
+  app:
+    image: loadorderlibrary-backup:testing
+    container_name: lol-testing-backup
+    restart: no
+    volumes:
+      - ./storage/app/backups:/srv/lol-backup/storage/app/backups
+      - /srv/testingapi.loadorderlibrary.com/storage/app/uploads:/srv/lol-backup/storage/app/uploads
+    networks:
+      - lol
+      - lol-db
+    external_links:
+      - lol-dev-db
+
+networks:
+  lol:
+    external: true
+  lol-db:
+    external: true
