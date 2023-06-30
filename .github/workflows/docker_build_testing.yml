@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@main
 
       - name: Build Container Image
-        run: docker build --target app-testing -t $TAG -f docker/testing/app/Dockerfile .
+        run: docker build --target backup-testing -t $TAG -f docker/testing/app/Dockerfile .
 
       - name: Push to GHCR
         run: |

@@ -5,6 +5,7 @@ services:
     image: loadorderlibrary-backup:testing
     container_name: lol-testing-backup
     restart: no
+    env_file: .env
     volumes:
       - ./storage/app/backups:/srv/lol-backup/storage/app/backups
       - /srv/testingapi.loadorderlibrary.com/storage/app/uploads:/srv/lol-backup/storage/app/uploads

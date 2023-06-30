@@ -1,0 +1,8 @@
+*
+*/
+!composer.*
+!app/
+!bootstrap/
+!config/
+!storage/
+!artisan
