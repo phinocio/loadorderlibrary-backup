@@ -5,4 +5,5 @@
 !bootstrap/
 !config/
 !storage/
+!routes/
 !artisan
