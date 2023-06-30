@@ -2,8 +2,8 @@
 */
 !composer.*
 !app/
-!bootstrap/
+!bootstrap/app.php
 !config/
-!storage/
 !routes/
 !artisan
+!storage

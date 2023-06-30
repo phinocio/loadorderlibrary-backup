@@ -3,6 +3,8 @@ FROM composer:2.5.7 as build-dev-composer
 
 WORKDIR /app
 
+RUN mkdir -p bootstrap/cache
+
 COPY . .
 RUN composer install
 

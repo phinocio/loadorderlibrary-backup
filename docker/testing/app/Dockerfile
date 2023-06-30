@@ -3,8 +3,10 @@ FROM composer:2.5.7 as build-testing-composer
 
 WORKDIR /app
 
+RUN mkdir -p bootstrap/cache
+
 COPY . .
-RUN composer install
+RUN composer install --prefer-dist --no-dev --optimize-autoloader --no-interaction
 
 ##########################################################
 # Testing app
