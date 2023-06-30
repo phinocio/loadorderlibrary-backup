@@ -31,8 +31,8 @@ RUN docker-php-ext-install pdo_mysql zip
 
 # Copy project to container
 COPY . .
-COPY --from=build-dev-composer /app/vendor ./vendor
-COPY --from=build-dev-composer /app/bootstrap ./bootstrap
+COPY --from=build-testing-composer /app/vendor ./vendor
+COPY --from=build-testing-composer /app/bootstrap ./bootstrap
 
 RUN chown -R $user:$user /srv/lol-backup
 
