@@ -13,7 +13,7 @@ services:
       - lol
       - lol-db
     external_links:
-      - lol-dev-db
+      - lol-testing-db
 
 networks:
   lol:
