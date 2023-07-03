@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -12,7 +13,27 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('backup:clean')
+            ->daily()->at('01:00')
+            ->environments(['production'])
+            ->onSuccess(function () {
+                Log::channel('backups')->info('✅ Clean Backups');
+            })
+            ->onFailure(function () {
+                Log::channel('backups')->error('❌ Clean Backups');
+            })
+            ->appendOutputTo(storage_path('logs/scheduled-backups.log'));
+
+        $schedule->command('backup:run')
+            ->daily()->at('01:30')
+            ->environments(['production'])
+            ->onSuccess(function () {
+                Log::channel('backups')->info('✅ Clean Backups');
+            })
+            ->onFailure(function () {
+                Log::channel('backups')->error('❌ Clean Backups');
+            })
+            ->appendOutputTo(storage_path('logs/scheduled-backups.log'));
     }
 
     /**
@@ -20,7 +41,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
