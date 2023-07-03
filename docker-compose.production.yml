@@ -1,0 +1,22 @@
+---
+# Production docker-compose File.
+services:
+  app:
+    image: ghcr.io/load-order-library/loadorderlibrary-backup:latest
+    container_name: lol-prod-backup
+    restart: no
+    env_file: .env
+    volumes:
+      - ./storage/app/backups:/srv/lol-backup/storage/app/backups
+      - /srv/api.loadorderlibrary.com/storage/app/uploads:/srv/lol-backup/storage/app/uploads
+    networks:
+      - lol
+      - lol-db
+    external_links:
+      - lol-prod-db
+
+networks:
+  lol:
+    external: true
+  lol-db:
+    external: true
