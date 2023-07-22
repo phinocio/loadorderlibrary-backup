@@ -13,7 +13,7 @@ services:
         restart: no
         volumes:
             - ./:/srv/lol-backup
-            - ./storage/app/backups:/srv/lol-backup/storage/app/backups
+            - /home/alice/Projects/Websites/loadorderlibrary/storage/app/backups:/srv/lol-backup/storage/app/backups
             - /home/alice/Projects/APIs/loadorderlibrary-api/storage/app/uploads:/srv/lol-backup/storage/app/uploads
         networks:
             - lol
