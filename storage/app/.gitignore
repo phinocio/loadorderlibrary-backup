@@ -1,3 +1,6 @@
 *
 !public/
 !.gitignore
+!uploads/
+!backups/
+!tmp/
