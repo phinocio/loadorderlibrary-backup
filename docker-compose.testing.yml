@@ -8,7 +8,6 @@ services:
     env_file: .env
     volumes:
       - ./storage/app/backups:/srv/lol-backup/storage/app/backups
-      - /srv/testing.loadorderlibrary.com/storage/app/backups:/srv/lol-backup/storage/app/backups
       - /srv/testingapi.loadorderlibrary.com/storage/app/uploads:/srv/lol-backup/storage/app/uploads
     networks:
       - lol
