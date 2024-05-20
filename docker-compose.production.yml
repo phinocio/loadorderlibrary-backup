@@ -2,7 +2,7 @@
 # Production docker-compose File.
 services:
   app:
-    image: ghcr.io/load-order-library/loadorderlibrary-backup:main
+    image: ghcr.io/phinocio/loadorderlibrary-backup:main
     container_name: lol-prod-backup
     restart: no
     env_file: .env

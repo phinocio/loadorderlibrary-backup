@@ -2,7 +2,7 @@
 # Testing docker-compose File.
 services:
   app:
-    image: ghcr.io/load-order-library/loadorderlibrary-backup:testing
+    image: ghcr.io/phinocio/loadorderlibrary-backup:testing
     container_name: lol-testing-backup
     restart: no
     env_file: .env
